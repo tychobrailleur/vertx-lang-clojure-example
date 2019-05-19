@@ -1,0 +1,15 @@
+* vertx-lang-clojure-example
+
+Vert.x Clojure example with Leiningen.
+This requires to build the [[https://github.com/tychobrailleur/vertx-lang-clojure][vertx-lang-clojure]] fork locally.
+
+** Usage
+
+#+begin_src bash
+lein run
+#+end_src
+
+** License
+Copyright © 2019 Sébastien Le Callonnec
+
+Distributed under Apache License 2.0, /cf./ =LICENSE.txt=.
