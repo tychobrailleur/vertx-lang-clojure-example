@@ -3,4 +3,5 @@
 
 (defn -main [& args]
   (let [v (vertx/vertx)]
+    (vertx/deploy-verticle v "vertx-lang-clojure-example.websocket.clj")
     (vertx/deploy-verticle v "vertx-lang-clojure-example.http_server.clj")))
