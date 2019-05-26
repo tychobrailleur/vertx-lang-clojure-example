@@ -1,6 +1,5 @@
-* vertx-lang-clojure-example
-
 Vert.x Clojure example with Leiningen.
+
 This requires to build the [[https://github.com/tychobrailleur/vertx-lang-clojure][vertx-lang-clojure]] fork locally.
 
 ** Usage
@@ -8,6 +7,8 @@ This requires to build the [[https://github.com/tychobrailleur/vertx-lang-clojur
 #+begin_src bash
 lein run
 #+end_src
+
+The websocket example can then be accessed [[http://localhost:9000/static/index.html][here]].
 
 ** License
 Copyright © 2019 Sébastien Le Callonnec
