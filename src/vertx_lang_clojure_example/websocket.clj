@@ -1,12 +1,13 @@
 (ns vertx-lang-clojure-example.websocket
   (:require [io.vertx.clojure.core.vertx :as vertx]
-            [io.vertx.clojure.core.http.http-server :as server]))
+            [io.vertx.clojure.core.http.http-server :as server]
+            [io.vertx.ext.web.Router :as vertx-router]
+            [io.vertx.ext.web.handler.StaticHandler :as static-handler]))
 
 (defn define-router [vertx]
-  (let [router (io.vertx.ext.web.Router/router vertx)
-        static-handler (io.vertx.ext.web.handler.StaticHandler/create)]
-    (doto
-        (.route router "/static/*")
+  (let [router (vertx-router/router vertx)
+        static-handler (static-handler/create)]
+    (doto (.route router "/static/*")
       (.handler static-handler))
     router))
 
