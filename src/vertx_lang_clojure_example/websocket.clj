@@ -1,8 +1,8 @@
 (ns vertx-lang-clojure-example.websocket
   (:require [io.vertx.clojure.core.vertx :as vertx]
             [io.vertx.clojure.core.http.http-server :as server]
-            [io.vertx.ext.web.Router :as vertx-router]
-            [io.vertx.ext.web.handler.StaticHandler :as static-handler]))
+            [io.vertx.clojure.ext.web.router :as vertx-router]
+            [io.vertx.clojure.ext.web.handler.static-handler :as static-handler]))
 
 (defn define-router [vertx]
   (let [router (vertx-router/router vertx)

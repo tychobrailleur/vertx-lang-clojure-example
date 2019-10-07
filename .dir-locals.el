@@ -1,0 +1,7 @@
+((web-mode . ((web-mode-markup-indent-offset . 2)
+              (web-mode-css-indent-offset . 2)
+              (fill-column . 90)))
+ (js-mode . ((js-indent-level . 2)))
+ (json-mode . ((js-indent-level . 2)
+               (json-reformat:indent-width . 2)))
+ (css-mode . ((css-indent-offset . 2))))
