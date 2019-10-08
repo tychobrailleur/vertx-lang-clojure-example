@@ -4,5 +4,6 @@
   :license {:name "Apache License 2.0"
             :url "https://www.apache.org/licenses/LICENSE-2.0.txt"}
   :dependencies [[org.clojure/clojure "1.10.0"]
+                 [io.vertx/vertx-web "3.8.2"]
                  [com.w2v4/vertx-lang-clojure "3.8.2-SNAPSHOT"]]
   :main vertx-lang-clojure-example.core)
