@@ -1,5 +1,6 @@
 (ns vertx-lang-clojure-example.core
-  (:require [io.vertx.clojure.core.vertx :as vertx]))
+  (:require [io.vertx.clojure.core.vertx :as vertx])
+   (:gen-class))
 
 (defn -main [& args]
   (let [v (vertx/vertx)]
