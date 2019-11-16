@@ -6,4 +6,5 @@
   (let [v (vertx/vertx)]
     (vertx/deploy-verticle v "vertx-lang-clojure-example.websocket.clj")
     (vertx/deploy-verticle v "vertx-lang-clojure-example.http_server.clj")
-    (vertx/deploy-verticle v "vertx-lang-clojure-example.net-server.clj")))
+    (vertx/deploy-verticle v "vertx-lang-clojure-example.net-server.clj")
+    (vertx/deploy-verticle v "vertx-lang-clojure-example.sql.clj")))
