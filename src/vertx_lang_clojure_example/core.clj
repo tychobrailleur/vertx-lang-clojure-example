@@ -13,5 +13,5 @@
   (let [v (vertx/vertx)]
     (vertx/deploy-verticle v "vertx-lang-clojure-example.websocket.clj" my-handler)
     (vertx/deploy-verticle v "vertx-lang-clojure-example.http_server.clj" my-handler)
-    (vertx/deploy-verticle v "vertx-lang-clojure-example.net-server.clj" my-handler)
-    (vertx/deploy-verticle v "vertx-lang-clojure-example.sql.clj" my-handler)))
+    (vertx/deploy-verticle v "vertx-lang-clojure-example.net_server.clj" my-handler)
+    (vertx/deploy-verticle v "vertx-lang-clojure-example.db_store.clj" my-handler)))

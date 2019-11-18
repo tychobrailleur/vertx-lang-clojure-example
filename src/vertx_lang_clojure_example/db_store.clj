@@ -1,4 +1,4 @@
-(ns vertx-lang-clojure-example.sql
+(ns vertx-lang-clojure-example.db-store
   (:require [io.vertx.lang.clojure.json :as json]
             [io.vertx.clojure.core.vertx :as vertx]
             [io.vertx.clojure.ext.jdbc.jdbc-client :as jdbc-client]
@@ -37,7 +37,6 @@
                           (.close c))))))))))))))))))
 
 (defn start [vertx]
-  (println "Starting...")
   (let [config (-> (json/new-json-object)
                    (json/put "url" "jdbc:h2:mem:demo;DB_CLOSE_DELAY=-1")
                    (json/put "driver_class" "org.h2.Driver")
