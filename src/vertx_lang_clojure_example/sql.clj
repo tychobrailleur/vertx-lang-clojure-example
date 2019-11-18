@@ -37,6 +37,7 @@
                           (.close c))))))))))))))))))
 
 (defn start [vertx]
+  (println "Starting...")
   (let [config (-> (json/new-json-object)
                    (json/put "url" "jdbc:h2:mem:demo;DB_CLOSE_DELAY=-1")
                    (json/put "driver_class" "org.h2.Driver")
