@@ -1,8 +1,8 @@
 (ns vertx-lang-clojure-example.net-server
-    (:require [io.vertx.clojure.core.vertx :as vertx]
-              [io.vertx.clojure.core.net.net-server :as net-server]
-              [io.vertx.clojure.core.net.net-socket :as net-socket]
-              [io.vertx.clojure.core.net.net-server-options :as net-server-options]))
+  (:require [io.vertx.clojure.core.vertx :as vertx]
+            [io.vertx.clojure.core.net.net-server :as net-server]
+            [io.vertx.clojure.core.net.net-socket :as net-socket]
+            [io.vertx.clojure.core.net.net-server-options :as net-server-options]))
 
 
 (defn create-server-options [port]
@@ -20,4 +20,4 @@
           (fn [socket]
             (net-socket/handler
              socket (net-socket/handler (fn [buf] (println buf)))))))
-        (net-server/listen))))
+        (net-server/listen (net-server/handler (fn [e] (println e)))))))

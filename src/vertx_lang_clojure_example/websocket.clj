@@ -21,17 +21,17 @@
 (defn create-request-handler [vertx]
   (fn [websocket]
     (let [timerId (.setPeriodic vertx 1000
-                  (vertx/handler
-                   (fn [id] (.writeTextMessage websocket (create-message)))))]
+                                (vertx/handler
+                                 (fn [id] (.writeTextMessage websocket (create-message)))))]
       (.endHandler websocket (vertx/handler (socket-closed-handler vertx timerId)))
       (.closeHandler websocket (vertx/handler (socket-closed-handler vertx timerId))))))
 
 (defn start [vertx]
   (let [http-server (vertx/create-http-server vertx)
         router (define-router vertx)
-        fileSystem (.fileSystem vertx)]
+        fileSystem (vertx/file-system vertx)]
     (println "Start called...")
     (-> http-server
         (server/request-handler router)
-        (server/websocket-handler (vertx/handler (create-request-handler vertx)))
+        (server/web-socket-handler (vertx/handler (create-request-handler vertx)))
         (server/listen 9000))))

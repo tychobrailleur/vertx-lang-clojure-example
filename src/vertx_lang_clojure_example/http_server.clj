@@ -1,6 +1,5 @@
 (ns vertx-lang-clojure-example.http-server
-  (:require ;; [clojure.tools.logging :as log]
-            [io.vertx.lang.clojure.json :as json]
+  (:require [io.vertx.lang.clojure.json :as json]
             [io.vertx.lang.clojure.logging :as logging]
             [io.vertx.clojure.core.vertx :as vertx]
             [io.vertx.clojure.core.http.http-server :as server]

@@ -6,7 +6,7 @@
   (:gen-class))
 
 (def my-handler
-  (verticle/completion-handler #(println %)))
+  (verticle/completion-handler println))
 
 
 (defn -main [& args]
