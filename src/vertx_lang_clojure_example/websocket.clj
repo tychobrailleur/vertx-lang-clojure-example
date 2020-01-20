@@ -2,6 +2,7 @@
   (:require [io.vertx.clojure.core.vertx :as vertx]
             [io.vertx.clojure.core.http.http-server :as server]
             [io.vertx.clojure.ext.web.router :as vertx-router]
+            [io.vertx.clojure.core.http.web-socket :as ws]
             [io.vertx.clojure.ext.web.handler.static-handler :as static-handler]))
 
 (defn define-router [vertx]
@@ -14,17 +15,17 @@
 (defn create-message []
   (str (System/currentTimeMillis) " – " (rand-int 10000000)))
 
-(defn socket-closed-handler [vertx timerId]
+(defn socket-closed-handler [vertx timer-id]
   (fn [arg]
-    (.cancelTimer vertx timerId)))
+    (vertx/cancel-timer vertx timer-id)))
 
 (defn create-request-handler [vertx]
   (fn [websocket]
-    (let [timerId (.setPeriodic vertx 1000
-                                (vertx/handler
-                                 (fn [id] (.writeTextMessage websocket (create-message)))))]
-      (.endHandler websocket (vertx/handler (socket-closed-handler vertx timerId)))
-      (.closeHandler websocket (vertx/handler (socket-closed-handler vertx timerId))))))
+    (let [timer-id (vertx/set-periodic vertx 1000
+                                      (vertx/handler
+                                       (fn [_id] (ws/write-text-message websocket (create-message)))))]
+      (ws/end-handler websocket (vertx/handler (socket-closed-handler vertx timer-id)))
+      (ws/close-handler websocket (vertx/handler (socket-closed-handler vertx timer-id))))))
 
 (defn start [vertx]
   (let [http-server (vertx/create-http-server vertx)
