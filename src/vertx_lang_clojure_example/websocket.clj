@@ -29,8 +29,7 @@
 
 (defn start [vertx]
   (let [http-server (vertx/create-http-server vertx)
-        router (define-router vertx)
-        fileSystem (vertx/file-system vertx)]
+        router (define-router vertx)]
     (println "Start called...")
     (-> http-server
         (server/request-handler router)

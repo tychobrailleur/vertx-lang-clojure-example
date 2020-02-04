@@ -32,13 +32,14 @@
                      (sql-conn/handler
                       (fn [s]
                         (let [results (.result s)]
+                          (println (.getResults results))
                           (doseq [r (.getResults results)]
                             (println (.encode r)))
                           (.close c))))))))))))))))))
 
 (defn start [vertx]
   (let [config (-> (json/new-json-object)
-                   (json/put "url" "jdbc:h2:mem:demo;DB_CLOSE_DELAY=-1")
+                   (json/put "url" "jdbc:h2:mem:demo;LOCK_MODE=0;DB_CLOSE_ON_EXIT=FALSE")
                    (json/put "driver_class" "org.h2.Driver")
                    (json/put "username" "sa")
                    (json/put "password" "")
