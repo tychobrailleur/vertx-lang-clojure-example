@@ -21,9 +21,14 @@
 
 (defn create-request-handler [vertx]
   (fn [websocket]
-    (let [timer-id (vertx/set-periodic vertx 1000
-                                      (vertx/handler
-                                       (fn [_id] (ws/write-text-message websocket (create-message)))))]
+;;    (ws/accept websocket)
+    (let [timer-id (vertx/set-periodic
+                    vertx 1000
+                    (vertx/handler
+                     (fn [_id]
+                       (ws/write-text-message websocket
+                                              (create-message)
+                                              (ws/handler (fn [rr] (println rr)))))))]
       (ws/end-handler websocket (vertx/handler (socket-closed-handler vertx timer-id)))
       (ws/close-handler websocket (vertx/handler (socket-closed-handler vertx timer-id))))))
 

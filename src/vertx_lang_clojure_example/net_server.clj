@@ -19,5 +19,7 @@
          (net-server/handler
           (fn [socket]
             (net-socket/handler
-             socket (net-socket/handler (fn [buf] (println buf)))))))
+             (fn [h]
+               (println h)
+               (net-socket/handler (fn [buf] (println buf))))))))
         (net-server/listen (net-server/handler (fn [e] (println e)))))))

@@ -39,9 +39,9 @@
     (config-retriever/get-config
      options-retriever
      (vertx/handler
-      #((if (.failed %1)
-          (logging/error logger "Error")
-          (let [config (.result %1)]
-            (-> http-server
-                (server/request-handler (vertx/handler handle-request))
-                (server/listen (.getInteger config "port"))))))))))
+      #(if (.failed %1)
+         (logging/error logger "Error")
+         (let [config (.result %1)]
+           (-> http-server
+               (server/request-handler (vertx/handler handle-request))
+               (server/listen (.getInteger config "port")))))))))
