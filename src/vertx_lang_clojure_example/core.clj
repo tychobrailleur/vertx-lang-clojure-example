@@ -1,6 +1,5 @@
 (ns vertx-lang-clojure-example.core
   (:require [io.vertx.clojure.core.vertx :as vertx]
-            [io.vertx.clojure.core.future :as future]
             [io.vertx.lang.clojure.verticle :as verticle]
             [io.vertx.clojure.core.vertx-options :as vertx-options])
   (:gen-class))

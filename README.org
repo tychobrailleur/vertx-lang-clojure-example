@@ -11,6 +11,6 @@ lein run
 The websocket example can then be accessed [[http://localhost:9000/static/index.html][here]].
 
 ** License
-Copyright © 2019 Sébastien Le Callonnec
+Copyright © 2019–2021 Sébastien Le Callonnec
 
 Distributed under Apache License 2.0, /cf./ =LICENSE.txt=.
