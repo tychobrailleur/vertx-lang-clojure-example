@@ -1,5 +1,6 @@
 (ns vertx-lang-clojure-example.net-server
-  (:require [io.vertx.clojure.core.vertx :as vertx]
+  (:require [clojure.string :as str]
+            [io.vertx.clojure.core.vertx :as vertx]
             [io.vertx.clojure.core.net.net-server :as net-server]
             [io.vertx.clojure.core.net.net-socket :as net-socket]
             [io.vertx.clojure.core.net.net-server-options :as net-server-options]))
@@ -14,12 +15,11 @@
 (defn start [vertx]
   (let [server-options (create-server-options 10000)
         server (vertx/create-net-server vertx server-options)]
+
     (-> server
         (net-server/connect-handler
-         (net-server/handler
-          (fn [socket]
-            (net-socket/handler
-             (fn [h]
-               (println h)
-               (net-socket/handler (fn [buf] (println buf))))))))
-        (net-server/listen (net-server/handler (fn [e] (println e)))))))
+         (vertx/handler (fn [socket]
+                          (.handler socket
+                                    (vertx/handler
+                                     (fn [buf] (println (str/trim (.toString buf)))))))))
+        (net-server/listen (vertx/handler (fn [s] (println s)))))))
